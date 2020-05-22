@@ -1,7 +1,8 @@
 {
   "name": "nice-napi",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "nice(2) bindings for Node.js",
+  "os" : [ "!win32" ],
   "main": "./index.js",
   "exports": {
     "import": "./.esm-wrapper.mjs",
@@ -9,11 +10,10 @@
   },
   "types": "./index.d.ts",
   "scripts": {
-    "build": "node-gyp-build && gen-esm-wrapper . ./.esm-wrapper.mjs",
     "test": "node ./test.js",
-    "install": "npm run build",
+    "install": "node-gyp-build",
     "prebuildify": "prebuildify --napi",
-    "prepack": "prebuildify-ci download && ([ $(ls prebuilds | wc -l) = '2' ] || (echo 'Some prebuilds are missing'; exit 1))"
+    "prepack": " gen-esm-wrapper . ./.esm-wrapper.mjs && prebuildify-ci download && ([ $(ls prebuilds | wc -l) = '2' ] || (echo 'Some prebuilds are missing'; exit 1))"
   },
   "repository": {
     "type": "git",
