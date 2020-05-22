@@ -1,6 +1,6 @@
 {
   "name": "nice-napi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "nice(2) bindings for Node.js",
   "main": "./index.js",
   "exports": {
@@ -12,7 +12,7 @@
     "build": "node-gyp-build && gen-esm-wrapper . ./.esm-wrapper.mjs",
     "test": "node ./test.js",
     "install": "npm run build",
-    "prebuild": "prebuildify --napi",
+    "prebuildify": "prebuildify --napi",
     "prepack": "prebuildify-ci download && ([ $(ls prebuilds | wc -l) = '2' ] || (echo 'Some prebuilds are missing'; exit 1))"
   },
   "repository": {
